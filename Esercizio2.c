@@ -24,6 +24,6 @@ int main() {
   scanf("%s", numEsami[i].esame);
 
   printf("Il voto dell'esame  %s è: %d",  numEsami[i].esame, &(numEsami[i].voto));
-
+// una condizione if else se l'esame non è presente
   printf("\nL'esame non è presente.");
 }
