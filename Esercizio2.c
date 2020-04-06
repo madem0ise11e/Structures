@@ -10,23 +10,20 @@ int voto;
 
 void riempiArrayEsami(struct esame e[], int n);
 void stampaArrayEsami(struct esame e[], int n);
-int cercaEsame(struct esame e[], int n, char es);
+void cercaEsame(struct esame e[], int n);
 
 int main() {
 
   struct esame e[MAXLEN];
   int i, n, res;
-  char es;
+
    printf("Inserisci numero di esami che ha fatto lo studente: ");
    scanf("%d", &n);
    riempiArrayEsami(e,n);
    stampaArrayEsami(e,n);
-   printf("\nInserisci l'esame da cercare: ");
-   scanf("%s", es);
-   res = cercaEsame(e, n, es);
-   if (res == 1 || res == -1)
-   printf("\nL'esame non e' presente!\n");
-   else printf("\nIl voto dell'esame  %s è: %d \n",  e[i].nome, e[i].voto);
+
+   cercaEsame(e, n);
+
 return 0;
 }
 
@@ -46,15 +43,22 @@ void riempiArrayEsami(struct esame e[], int n){
 }
 
 
-int cercaEsame(struct esame e[],int n, char es){
-  int res = 0, i=0;
-  while (i<n && e[i].voto != es)    ++i;
-  if (i<n) res = i;
-  else res = -1;
-
+void cercaEsame(struct esame e[],int n){
+  int res, i=0;
+  char es[MAX_NUM];
+  printf("\nInserisci l'esame da cercare: ");
+  scanf("%s", es);
+  for (i = 0; i<n; ++i){
+    res = strcmp(e[i].nome, es);
+    if (res == 0){
+      printf("\nIl voto dell'esame  %s e': %d \n",  e[i].nome, e[i].voto);
+    break;}
+  }
+  if(res!=0){
+  printf("\nL'esame non e' presente!\n");
+}
   //  res = strcmp(e[i].nome, es);
     //printf("%d", res);
-    return res;
 }
 
 void stampaArrayEsami(struct esame e[], int n){
