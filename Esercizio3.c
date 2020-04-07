@@ -11,6 +11,7 @@ float mediaVoti;
 int menu();
 void riempiArrayDati(struct studente s[], int n);
 void stampaArrayDati(struct studente s[], int n);
+void stampaArrayStudente(struct studente s);
 void cercaMedia(struct studente s[], int n);
 
 int main() {
@@ -70,16 +71,23 @@ void riempiArrayDati(struct studente s[], int n){
 void stampaArrayDati(struct studente s[], int n){
   int i;
     for(i=0; i<n; ++i){
-      printf("Studente %s ha il voto piu' alto %d, voto piu' basso %d, media voti %f\n", s[i].cognome, s[i].votoAlto, s[i].votoBasso, s[i].mediaVoti);
+      stampaArrayStudente(s[i]);
     }
   }
 
+  void stampaArrayStudente(struct studente s){
+    printf("Studente %s ha il voto piu' alto %d, voto piu' basso %d, media voti %f\n", s.cognome, s.votoAlto, s.votoBasso, s.mediaVoti);
+  }
+
+
 void cercaMedia(struct studente s[], int n){
-  int i, largest;
+  int i, largest, stud=0;
   largest = s[0].mediaVoti;
   for(i=0; i<n; ++i){
-    if (largest < s[i].mediaVoti)
+    if (largest < s[i].mediaVoti){
     largest = s[i].mediaVoti;
+    stud = i;
+    }
   }
-  printf("La media piu' alta e' %d. \n", largest);
+  stampaArrayStudente(s[stud]);
 }
