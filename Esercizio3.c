@@ -46,7 +46,6 @@ int main() {
       }
     } while (selezione!=4);
     return 0;
-
 }
 
 struct studente riempiDati() {
@@ -67,8 +66,6 @@ void riempiArrayDati(struct studente s[], int n){
     s[i] = riempiDati();
   }
 }
-
-
 
 void stampaArrayDati(struct studente s[], int n){
   int i;
