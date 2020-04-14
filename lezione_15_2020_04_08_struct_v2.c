@@ -18,9 +18,9 @@ void eliminaStudente(struct studente *s);
 
 int main(){
 	struct studente *s; //s è un puntatore a struct studente. Non e' allocata
-			    //memoria per la struct 
+			    //memoria per la struct
 	s=riempiStudente(); // QUI CREO ESPLICITAMENTE LA STRUCT STUDENTE
-	stampaStudente(s); //QUI PASSO L'INDIRIZZO DI MEMORIA (NON E' CREATA UNA COPIA)	
+	stampaStudente(s); //QUI PASSO L'INDIRIZZO DI MEMORIA (NON E' CREATA UNA COPIA)
 	eliminaStudente(s); // QUI ESPLICITAMENTE ELIMINO LA STRUCT
 	return 0;
 }
@@ -28,7 +28,7 @@ int main(){
 struct studente *riempiStudente(){
 	struct studente *s=NULL; //s è una variabile allocata AUTOMATOCAMENTE che riempie
 				 // 8 byte che dovrà contenere un indirizzo di memoria
-				// corrispondente ad un struct studente 
+				// corrispondente ad un struct studente
 	struct studente s1;
 	/*ALLOCAZIONE DINAMCA DELLA MEMORIA per struct studente*/
 	s= (struct studente *) malloc(sizeof(struct studente));
@@ -37,8 +37,8 @@ struct studente *riempiStudente(){
 	printf("Dammi matricola e media:");
 	scanf("%d %f", &(s->matricola), &(s->media));
 	//scanf("%s %s", (*s).cognome, (*s).nome);
-	// return &s1; MAI FARE!!!!!! 
-	return s;	
+	// return &s1; MAI FARE!!!!!!
+	return s;
 
 }
 void stampaStudente(struct studente *p){
@@ -48,4 +48,3 @@ void stampaStudente(struct studente *p){
 void eliminaStudente(struct studente *s){
 	free(s);
 }
-
