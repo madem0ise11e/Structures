@@ -5,7 +5,7 @@
 
 #define MAXLEN 50
 #define MAX_NUM 30
-#define somma x+y
+
 struct studente {
 	char *nome;
 	char *cognome;
