@@ -51,10 +51,12 @@ struct studente * riempiStudente(){
     // return &s1; MAI !!!
     return s;
 }
+
 void stampaStudente(struct studente *p){
     printf("Cognome: %s  Nome: %s \n", p->cognome, p->nome );
     printf("Matricola: %d  Media: %f \n", p->matricola, p->media );
 }
+
 void eliminaStudente(struct studente *s){
   /*
   s = (struct studente *) malloc(sizeof(struct studente));
