@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include<string.h>
+
 #define MAXLEN 30
 #define MAX_NUM 50
 
