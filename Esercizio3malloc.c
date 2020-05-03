@@ -16,6 +16,7 @@ void riempiArrayDati(struct studente *s[], int n);
 void stampaArrayDati(struct studente *s[], int n);
 void stampaArrayStudente(struct studente *s);
 void cercaMedia(struct studente *s[], int n);
+void eliminaStudente(struct studente *s);
 
 int main() {
   struct studente *s[MAXLEN];
@@ -42,13 +43,16 @@ int main() {
         cercaMedia(s,n);
        break;
        case 4:
-       	printf (" USCITA \n");
+       eliminaStudente(s);
+       printf (" \n\n USCITA \n");
+
       break;
         default:
           printf (" Scelta non corretta \n");
         break;
       }
     } while (selezione!=4);
+
     return 0;
 }
 
@@ -97,4 +101,15 @@ void cercaMedia(struct studente *s[], int n){
     }
   }
   stampaArrayStudente(s[stud]);
+}
+void eliminaStudente(struct studente *s){
+	/*
+	s= (struct studente *) malloc(sizeof(struct studente));
+	s->nome= (char *) malloc(sizeof(char)*MAXLEN);
+	s->cognome= (char *) malloc(sizeof(char)*MAXLEN);
+
+	*/
+
+	free(s);
+  printf("\nLibero la memoria.");
 }
