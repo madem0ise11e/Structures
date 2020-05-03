@@ -1,28 +1,29 @@
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
+#include <string.h>
+
 #define MAXLEN 50
 
 struct studente {
-char *cognome;
+char cognome[MAXLEN];
 int votoBasso;
 int votoAlto;
 float mediaVoti;
 };
 
 int menu();
-void riempiArrayDati(struct studente s*, int n);
-void stampaArrayDati(struct studente *p);
-void stampaArrayStudente(struct studente *p);
-void cercaMedia(struct studente *s, int n);
-void eliminaStudente(struct studente *s);
+void riempiArrayDati(struct studente *s[], int n);
+void stampaArrayDati(struct studente *s[], int n);
+void stampaArrayStudente(struct studente *s);
+void cercaMedia(struct studente *s[], int n);
 
 int main() {
-  	struct studente *s;
+  struct studente *s[MAXLEN];
   int n, selezione, i;
   printf("Quanti studenti vuoi inserire? ");
   scanf("%d", &n);
   printf("Riempi i dati per gli studenti:\n");
-  s = riempiArrayDati();
+  riempiArrayDati(s, n);
 
 
     printf("\n\nProgramma menu a selezione\n");
@@ -35,10 +36,10 @@ int main() {
        case 1:
 
         printf("\nDati dei %d studenti: \n", n);
-      stampaArrayStudente(s);
+        stampaArrayDati(s,n);
           break;
        case 2:
-      //  cercaMedia(s,n);
+        cercaMedia(s,n);
        break;
        case 4:
        	printf (" USCITA \n");
@@ -51,70 +52,49 @@ int main() {
     return 0;
 }
 
-/*struct studente riempiDati() {
-    struct studente s;
+void riempiDati(struct studente *s) {
+
     printf("\nDammi Cognome: ");
-    scanf("%s", s.cognome);
+    scanf("%s", s->cognome);
     printf("Dammi il voto piu' basso: ");
-    scanf("%d", &(s.votoBasso));
-    printf("Dammi il voto piu' alto: ");
-    scanf("%d", &(s.votoAlto));
-    printf("Dammi la media di voti: ");
-    scanf("%f", &(s.mediaVoti));
-    return s;
-}*/
-
-struct studente *riempiDati() {
-  struct studente *s=NULL;
-  	struct studente s1;
-    s= (struct studente *) malloc(sizeof(struct studente));
-
-    s->cognome= (char *) malloc(sizeof(char)*MAXLEN);
-
-    printf("Dammi cognome: ");
-    scanf("%s %s", s->cognome);
-    printf("Dammi voto piu' basso: ");
     scanf("%d", &(s->votoBasso));
-    printf("Dammi voto piu' alto: ");
+    printf("Dammi il voto piu' alto: ");
     scanf("%d", &(s->votoAlto));
-    printf("Dammi media voti: ");
+    printf("Dammi la media di voti: ");
     scanf("%f", &(s->mediaVoti));
-    	return s;
+
+}
+void riempiArrayDati(struct studente *s[], int n){
+  int i;
+  struct studente *p;
+  for(i=0; i<n; ++i){
+    p= (struct studente *)malloc(sizeof(struct studente));
+    s[i] = p;
+    riempiDati(p);
   }
 
-void riempiArrayDati(struct studente s*, int n){
-  int i;
-  for(i=0; i<n; ++i){
-    s[i] = riempiDati();
-  }
 }
 
-/*void stampaArrayDati(struct studente s[], int n){
+void stampaArrayDati(struct studente *s[], int n){
   int i;
     for(i=0; i<n; ++i){
       stampaArrayStudente(s[i]);
     }
-  }*/
+  }
 
-  void stampaArrayStudente(struct studente *p){
-    printf("Studente %s ha il voto piu' alto %d, voto piu' basso %d, media voti %f\n", p->cognome, p->votoAlto, p->votoBasso, p->mediaVoti);
+  void stampaArrayStudente(struct studente *s){
+    printf("Studente %s ha il voto piu' alto %d, voto piu' basso %d, media voti %f\n", s->cognome, s->votoAlto, s->votoBasso, s->mediaVoti);
   }
 
 
-
-/*void cercaMedia(struct studente *s,int n){
-  int i,largest, stud=0;
-  largest = s[0].mediaVoti;
+void cercaMedia(struct studente *s[], int n){
+  int i, largest, stud=0;
+  largest = s[0]->mediaVoti;
   for(i=0; i<n; ++i){
-    if (largest < s[i].mediaVoti){
-    largest = s[i].mediaVoti;
+    if (largest < s[i]->mediaVoti){
+    largest = s[i]->mediaVoti;
     stud = i;
     }
   }
   stampaArrayStudente(s[stud]);
-}*/
-
-void eliminaStudente(struct studente *s){
-  free(s->cognome);
-  free(s);
 }
