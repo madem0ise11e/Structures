@@ -12,7 +12,6 @@ float mediaVoti;
 int matricola;
 };
 
-//int menu();
 void riempiArrayDati(struct studente *s[], int n);
 void stampaArrayDati(struct studente *s[], int n);
 void stampaArrayStudente(struct studente *s);
@@ -136,15 +135,15 @@ void cercaxCognome(struct studente *s[], int n){
   char cog[MAX_NUM];
   printf("\nInserisci cognome da cercare: ");
   scanf("%s", cog);
-  while(i<n){
+  for (i = 0; i<n; ++i){
     res = strcmp(s[i]->cognome, cog);
     if (res == 0){
-    stampaArrayStudente(s[i]);
+        stampaArrayStudente(s[i]);
     }
-    if(res!=0){
+  }
+  if(res!=0){
     printf("\nLo studente non e' presente!\n");
-  } i++;
- }
+  }
 }
 
 void cercaxNome(struct studente *s[], int n){
@@ -156,7 +155,7 @@ void cercaxNome(struct studente *s[], int n){
     res = strcmp(s[i]->nome, nom);
     if (res == 0){
         stampaArrayStudente(s[i]);
-    break;}
+    }
   }
   if(res!=0){
     printf("\nLo studente non e' presente!\n");
