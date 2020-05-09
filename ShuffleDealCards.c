@@ -1,3 +1,4 @@
+//Programma per mescolare e distribuire le carte
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
