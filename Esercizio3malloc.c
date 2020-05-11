@@ -11,7 +11,6 @@ int votoAlto;
 float mediaVoti;
 };
 
-int menu();
 void riempiArrayDati(struct studente *s[], int n);
 void stampaArrayDati(struct studente *s[], int n);
 void stampaArrayStudente(struct studente *s);
